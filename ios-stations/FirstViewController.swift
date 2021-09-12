@@ -12,7 +12,8 @@ class FirstViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        self.view.backgroundColor = UIColor(named: "Main")
+        //ミッション２？で設定した背景色の追加
+//        self.view.backgroundColor = UIColor(named: "Main")
     }
 
 }
