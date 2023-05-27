@@ -15,7 +15,8 @@ class FirstViewController: UIViewController {
         super.viewDidLoad()
         //ミッション２？で設定した背景色の追加
         self.view.backgroundColor = UIColor(named: "Main")
-        button.backgroundColor = UIColor.random
+//        button.titleLabel?.font = UIFont.systemFont(ofSize: 18)
+//        button.backgroundColor = UIColor.random
         //iself.view.backgroundColor = UIColor.Theme.main
     }
     
