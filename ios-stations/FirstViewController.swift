@@ -9,7 +9,7 @@ class FirstViewController: UIViewController {
     
     @IBOutlet weak var button: UIButton!
     var books: [Book]?
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,26 +20,14 @@ class FirstViewController: UIViewController {
     }
     
     
-    
-    @IBAction func onTap(_ sender: Any) {
+    @IBAction func presentSecondViewController(_ sender: Any) {
         //ミッション９
-        //extensionのUIColorの中のrandomを呼ぶことでアクセスできる
         //button.backgroundColor = UIColor.random
-        
-        
-        
-        
-        //let nextVC = storyboard?.instantiateViewController(identifier: "SecondView")
-        //self.present(nextVC!, animated: true, completion: nil)
-        //let nextVC = storyboard!.instantiateViewController(identifier: "SecondView") as SecondViewController
-        //let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "presentView") as! PresentViewController
-        
-       let presentSecondViewController = storyboard!.instantiateViewController(identifier: "SecondView") as SecondViewController
+        let presentSecondViewController = storyboard!.instantiateViewController(identifier: "SecondView") as SecondViewController
         presentSecondViewController.url = ""
         self.present(presentSecondViewController, animated: true, completion: nil)
         
     }
-    
 }
 
 extension FirstViewController: UITableViewDataSource {
