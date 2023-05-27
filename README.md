@@ -7,34 +7,34 @@ Railway では Git で自分が取り組んだ内容を記録するときに、�
 
 ## バージョン情報
 
+本Railwayでは以下のバージョンを想定しています。
 
 | 言語、フレームワークなど | バージョン |
-| :----------------------: | :--------: |
-|          Swift           |    5.0     |
-|           Yarn           |    5.0     |
+| :------------------: | :------: |
+|      Swift           |    5.0   |
 
 ## 初期設定
 
 ### 必要なツール
 
-| ツール名 | 目安となるバージョン |
-| :------: | :------------------: |
-|  Xcode   |        12.5.1        |
-| xcpretty |        0.3.0         |
-| Node.js  |      14.*, 16.*      |
-|   Yarn   |         1.*          |
+| ツール名  | バージョン                             |
+| :------: | :----------------------------------: |
+|  Xcode   | 12.5.1以降                            |
+| xcpretty | 0.3.0以降                             |
+| Node.js  | v14.17.0以降（v16.0.0以降を推奨します。） |
+|   Yarn   | 1.*系                                 |
 
 バージョンが異なる場合、動作しない場合があります。
 
 ### xcprettyのインストール
 Stationのクリア判定に[xcpretty](https://github.com/xcpretty/xcpretty)というライブラリを使用します。
-以下のコマンドで`xcpretty`をインストールしてください。
+`gem`コマンドで`xcpretty`をインストールしてください。
 
 ```shell
 $ gem install xcpretty
 ```
 
-`gem`コマンドの実行でエラーが出る場合は、[Homebrew](https://brew.sh/index_ja)やRubyの設定を確認し、修正してください。
+`gem`コマンドの実行でエラーが出る場合は、Rubyが正しくインストールされてパスが通っていること、[Homebrew](https://brew.sh/index_ja)を使用している場合は正しく構成されていることを確認してください。
 
 ### 必要なツールがインストール済みの場合
 
@@ -42,16 +42,16 @@ $ gem install xcpretty
 
 ####  `ios-stations`リポジトリのFork
 
-画面右上にあるForkより [iOS Railway](https://github.com/SuguruOoki/ios-stations)のリポジトリを自分のアカウントにForkしてください。
+画面右上にあるForkより[iOS Railway](https://github.com/TechBowl-japan/ios-stations)のリポジトリを自分のアカウントにForkしてください。
 
 #### `ios-stations`リポジトリのクローン
 
-作成したリポジトリを作業するディレクトリにクローンしましょう。
+Forkしたリポジトリを作業するディレクトリにクローンしましょう。
 
 * Terminal.app(iTerm2などでも良い)
 
 
-で作業するディレクトリを開き、次のコマンドでForkしたiOS　Railwayのリポジトリをローカルにクローンしてください。
+で作業するディレクトリを開き、次のコマンドでForkしたiOS Railwayのリポジトリをローカルにクローンしてください。
 
 
 ```shell
@@ -76,13 +76,14 @@ git@github.com:SuguruOoki/ios-stations.git
 
 #### 1. Homebrew のインストール
 
+（すでにインストール済みの方は、この手順を飛ばしてください。）
+
 Terminal.app を開き、次のコマンドをコピーアンドペーストで実行してください。
 
 ```shell
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
 
-すでにインストール済みの方は、この手順を飛ばしてください。
 インストールされたかどうかを確認するには、Terminal.app を開いて
 
 ```shell
@@ -116,9 +117,7 @@ node -v
 
 ![スクリーンショット 2021-04-25 16 18 23](https://user-images.githubusercontent.com/16362021/115984382-deda3880-a5e1-11eb-9da3-97c71ad5863b.png)
 
-v から先は、インストールしたバージョンが表示されるため、上記画像の表示と全く同じバージョンでなくても大丈夫です。
-本当は Node.js のバージョン管理ツールである `n` や `nodebrew` などのツールを入れた方が実践的ですが、パスの修正などができないとトラブルが起きた時に何もわからなくなるので、わからないうちはお勧めしません。
-一旦素直に Homebrew で直接 Node.js の最新版をインストールしておきましょう。
+v から先は、インストールしたNode.jsのバージョンが表示されます。上記画像の表示と全く同じバージョンでなくても大丈夫です。
 
 #### 3. Yarn のインストール
 
@@ -140,14 +139,18 @@ yarn -v
 
 ### Yarn による環境設定の実行
 
+`ios-station`ディレクトリ内で
+
 ```shell
 yarn install
 ```
 
-こちらでTechTrainのログインを求められますので、メールアドレスとパスワードを入れてログインしましょう。
-GitHubでサインアップした方は、[こちら](https://techbowl.co.jp/techtrain/resetpassword)からパスワードの再発行より、パスワードを発行して、そのパスワードでログインしてください。
+を実行してください。
 
-Station の問題は、[TechTrain の画面](https://techbowl.co.jp/techtrain/mypage/railway/4)で確認してください。
+こちらでTechTrainのログインを求められますので、メールアドレスとパスワードを入れてログインしましょう。
+GitHubでサインアップした方は、[こちら](https://techtrain.dev/resetpassword)からパスワードの再発行より、パスワードを発行して、そのパスワードでログインしてください。
+
+Stationの問題は、[TechTrainの画面](https://techtrain.dev/mypage/railway/4)で確認してください。
 
 ## 自分のリポジトリの状態を最新の TechBowl-japan/ios-stations と合わせる
 

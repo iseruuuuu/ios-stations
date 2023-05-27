@@ -200,10 +200,29 @@ class ios_stationsTests: XCTestCase {
     
     func testStation13() throws {
         let url = URL(fileURLWithPath: #file).deletingLastPathComponent().deletingLastPathComponent().appendingPathComponent("ios-stations.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved")
-        let data = try XCTUnwrap(try? Data(contentsOf: url), "SwiftPackageManagerが設定されていません")
-        let model = try JSONDecoder().decode(SwiftPM.self, from: data)
-        let alamofirePin = try XCTUnwrap(model.object.pins.first(where: { $0.package == "Alamofire" }), "SwiftPackageManager経由でAlamofireがインストールされていません")
-        XCTAssertEqual(alamofirePin.state.version, "5.4.3", "Alamofireのバージョンが指定したバージョンと異なっています")
+        let data = try XCTUnwrap(try? Data(contentsOf: url), "SwiftPackageManagerが設定されていないか、対応していないバージョンです")
+        
+        let json = try XCTUnwrap(try JSONSerialization.jsonObject(with: data) as? Dictionary<String, Any>, "パッケージ情報の取得に失敗しました")
+        let packageVersion = try XCTUnwrap(json["version"] as? Int, "パッケージ情報の取得に失敗しました")
+
+        var isAlamofireVersionMatched: Bool? = nil
+
+        switch packageVersion {
+        case 1:
+            let model = try JSONDecoder().decode(SwiftPMv1.self, from: data)
+            let alamofirePin = try XCTUnwrap(model.object.pins.first(where: { $0.package.lowercased() == "alamofire" }), "SwiftPackageManager経由でAlamofireがインストールされていません")
+            isAlamofireVersionMatched = alamofirePin.state.version == "5.4.3"
+        case 2:
+            let model = try JSONDecoder().decode(SwiftPMv2.self, from: data)
+            let alamofirePin = try XCTUnwrap(model.pins.first(where: { $0.identity.lowercased() == "alamofire" }), "SwiftPackageManager経由でAlamofireがインストールされていません")
+            isAlamofireVersionMatched = alamofirePin.state.version == "5.4.3"
+        default:
+            XCTFail("現在対応していないSwiftPackageManagerバージョンです。運営による修正対応をお待ち下さい")
+        }
+        
+        guard let isAlamofireVersionMatched = isAlamofireVersionMatched else { return }
+
+        XCTAssertTrue(isAlamofireVersionMatched, "Alamofireのバージョンが指定したバージョンと異なっています")
     }
     
     func testStation14() throws {
@@ -317,25 +336,37 @@ extension UIButton {
     }
 }
 
-struct SwiftPM: Decodable {
-    let object: Object
-    let version: Int
-}
-
-struct Object: Decodable {
-    let pins: [Pin]
-}
-
-struct Pin: Decodable {
-    let package: String
-    let repositoryURL: String
-    let state: State
-}
-
 struct State: Decodable {
     let branch: String?
     let revision: String
     let version: String
+}
+
+struct SwiftPMv1: Decodable {
+    let object: Object
+    let version: Int
+    
+    struct Object: Decodable {
+        let pins: [Pin]
+    }
+    
+    struct Pin: Decodable {
+        let package: String
+        let repositoryURL: String
+        let state: State
+    }
+}
+
+struct SwiftPMv2: Decodable {
+    let pins: [Pin]
+    let version: Int
+    
+    struct Pin: Decodable {
+        let identity: String
+        let kind: String
+        let location: String
+        let state: State
+    }
 }
 
 class MockBookAPIClient: BookAPIClientProtocol {

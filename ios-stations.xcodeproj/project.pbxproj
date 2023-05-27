@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		94ECF65426EDF5EF0069D584 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 94ECF65626EDF5EF0069D584 /* InfoPlist.strings */; };
+		617F70BE29C2BD4B00B7AFFE /* testResources in Resources */ = {isa = PBXBuildFile; fileRef = 617F70BD29C2BD4B00B7AFFE /* testResources */; };
 		BE245141266FBEE00038AD81 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE245140266FBEE00038AD81 /* AppDelegate.swift */; };
 		BE245143266FBEE00038AD81 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE245142266FBEE00038AD81 /* SceneDelegate.swift */; };
 		BE245145266FBEE00038AD81 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE245144266FBEE00038AD81 /* FirstViewController.swift */; };
@@ -42,8 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		94ECF65526EDF5EF0069D584 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		94ECF65726EDF7110069D584 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		617F70BD29C2BD4B00B7AFFE /* testResources */ = {isa = PBXFileReference; lastKnownFileType = folder; path = testResources; sourceTree = "<group>"; };
 		BE24513D266FBEE00038AD81 /* ios-stations.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-stations.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE245140266FBEE00038AD81 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BE245142266FBEE00038AD81 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -116,6 +115,7 @@
 		BE24513F266FBEE00038AD81 /* ios-stations */ = {
 			isa = PBXGroup;
 			children = (
+				617F70BD29C2BD4B00B7AFFE /* testResources */,
 				BE245140266FBEE00038AD81 /* AppDelegate.swift */,
 				BE7131362685ED0F00E3EAB8 /* Book.swift */,
 				BE245142266FBEE00038AD81 /* SceneDelegate.swift */,
@@ -263,6 +263,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				617F70BE29C2BD4B00B7AFFE /* testResources in Resources */,
 				BE24514D266FBEE10038AD81 /* LaunchScreen.storyboard in Resources */,
 				94ECF65426EDF5EF0069D584 /* InfoPlist.strings in Resources */,
 				BE24514A266FBEE10038AD81 /* Assets.xcassets in Resources */,

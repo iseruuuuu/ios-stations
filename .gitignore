@@ -91,3 +91,4 @@ iOSInjectionProject/
 
 .techtrain/config.toml
 node_modules/
+.DS_Store
