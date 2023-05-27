@@ -38,6 +38,7 @@
                                             </attributes>
                                         </fragment>
                                     </attributedString>
+                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="presentSecondViewController:" destination="K6t-d8-XHu" eventType="touchUpInside" id="sFa-7d-NtH"/>

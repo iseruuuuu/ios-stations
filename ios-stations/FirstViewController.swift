@@ -14,6 +14,8 @@ class FirstViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        self.view.backgroundColor = UIColor.Theme.main
+        self.view.backgroundColor = UIColor(named: "Main")
     }
     
     //  //ミッション９

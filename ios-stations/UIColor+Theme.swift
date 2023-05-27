@@ -7,9 +7,7 @@ import UIKit
 
 extension UIColor {
     struct Theme {
-        static var main: UIColor  {
-            return UIColor(named: "Main")!
-        }
+        static var main: UIColor  { return UIColor(named: "Main")! }
     }
     
     static var random: UIColor {
