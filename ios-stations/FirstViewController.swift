@@ -14,7 +14,8 @@ class FirstViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //ミッション２？で設定した背景色の追加
-        //self.view.backgroundColor = UIColor(named: "Main")
+        self.view.backgroundColor = UIColor(named: "Main")
+        button.backgroundColor = UIColor.random
         //iself.view.backgroundColor = UIColor.Theme.main
     }
     
@@ -34,6 +35,7 @@ class FirstViewController: UIViewController {
         //let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "presentView") as! PresentViewController
         
        let presentSecondViewController = storyboard!.instantiateViewController(identifier: "SecondView") as SecondViewController
+        presentSecondViewController.url = ""
         self.present(presentSecondViewController, animated: true, completion: nil)
         
     }
