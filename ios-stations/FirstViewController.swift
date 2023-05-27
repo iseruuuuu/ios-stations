@@ -1,6 +1,7 @@
 //
 //  FirstViewController.swift
 //  ios-stations
+//  made by iseki ryutaro
 //
 
 import UIKit
@@ -13,21 +14,17 @@ class FirstViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //ミッション２？で設定した背景色の追加
-        self.view.backgroundColor = UIColor(named: "Main")
-//        button.titleLabel?.font = UIFont.systemFont(ofSize: 18)
-//        button.backgroundColor = UIColor.random
-        //iself.view.backgroundColor = UIColor.Theme.main
     }
     
+    //  //ミッション９
+    @IBAction func changeButtonBackgroundColor() {
+        self.button.backgroundColor = UIColor.random
+    }
     
     @IBAction func presentSecondViewController(_ sender: Any) {
-        //ミッション９
-        //button.backgroundColor = UIColor.random
         let presentSecondViewController = storyboard!.instantiateViewController(identifier: "SecondView") as SecondViewController
         presentSecondViewController.url = ""
         self.present(presentSecondViewController, animated: true, completion: nil)
-        
     }
 }
 
