@@ -6,68 +6,59 @@
 
 import UIKit
 
-class FirstViewController: UIViewController {
+class FirstViewController: UIViewController{
     
-    //@IBOutlet weak var button: UIButton!
-    var books: [Book]?
+    var books: [Book]? = [] {
+        didSet {
+            tableView.reloadData()
+        }
+    }
     
+    @IBOutlet weak var tableView: UITableView!
     var bookAPIClient: BookAPIClientProtocol = BookAPIClient()
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //self.view.backgroundColor = UIColor.Theme.main
-        //self.view.backgroundColor = UIColor(named: "Main")
         
         bookAPIClient.fetchBooks(offset: 10) { [weak self] fetchedBooks in
             guard let fetchedBooks = fetchedBooks else {
                 print("Failed to fetch books.")
                 return
             }
-            
             DispatchQueue.main.async {
                 self?.books = fetchedBooks
             }
-            
         }
-        
-    }
-    
-    
-    //ミッション９
-    @IBAction func changeButtonBackgroundColor() {
-        //self.button.backgroundColor = UIColor.random
-    }
-    
-    @IBAction func presentSecondViewController(_ sender: Any) {
-        let presentSecondViewController = storyboard!.instantiateViewController(identifier: "SecondView") as SecondViewController
-        presentSecondViewController.url = "https://techbowl.co.jp/"
-        self.present(presentSecondViewController, animated: true, completion: nil)
     }
 }
 
 extension FirstViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "reuseCell", for: indexPath) as? BookCell else {
             fatalError("Dequeue failed: AnimalTableViewCell.")
         }
-        
+        guard let books = books, indexPath.row < books.count else {
+            return cell
+        }
+        let book =  books[indexPath.row]
         cell.images.image = UIImage(named: "Book")
-        cell.text1.text = "Label"
-        cell.text2.text = "label"
-        
+        cell.text1.text = book.title
+        cell.text2.text = book.id
         return cell
-        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        guard let books = books else {
+            return 0
+        }
+        return books.count
     }
 }
 
 extension FirstViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let presentSecondViewController = storyboard!.instantiateViewController(identifier: "SecondView") as SecondViewController
+        presentSecondViewController.url = books?[indexPath.row].url
+        self.present(presentSecondViewController, animated: true, completion: nil)
     }
 }
-
