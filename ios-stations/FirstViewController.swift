@@ -15,7 +15,7 @@ class FirstViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 //        self.view.backgroundColor = UIColor.Theme.main
-        self.view.backgroundColor = UIColor(named: "Main")
+//        self.view.backgroundColor = UIColor(named: "Main")
     }
     
     //  //ミッション９
@@ -25,7 +25,7 @@ class FirstViewController: UIViewController {
     
     @IBAction func presentSecondViewController(_ sender: Any) {
         let presentSecondViewController = storyboard!.instantiateViewController(identifier: "SecondView") as SecondViewController
-        presentSecondViewController.url = ""
+        presentSecondViewController.url = "https://techbowl.co.jp/"
         self.present(presentSecondViewController, animated: true, completion: nil)
     }
 }
