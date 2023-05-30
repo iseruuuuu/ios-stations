@@ -3,11 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		617F70BE29C2BD4B00B7AFFE /* testResources in Resources */ = {isa = PBXBuildFile; fileRef = 617F70BD29C2BD4B00B7AFFE /* testResources */; };
+		6DC783CF2A25E0DE00C07A8F /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 6DC783CE2A25E0DE00C07A8F /* Alamofire */; };
 		BE245141266FBEE00038AD81 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE245140266FBEE00038AD81 /* AppDelegate.swift */; };
 		BE245143266FBEE00038AD81 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE245142266FBEE00038AD81 /* SceneDelegate.swift */; };
 		BE245145266FBEE00038AD81 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE245144266FBEE00038AD81 /* FirstViewController.swift */; };
@@ -71,6 +72,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BE7131462688C07700E3EAB8 /* WebKit.framework in Frameworks */,
+				6DC783CF2A25E0DE00C07A8F /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -175,6 +177,9 @@
 			dependencies = (
 			);
 			name = "ios-stations";
+			packageProductDependencies = (
+				6DC783CE2A25E0DE00C07A8F /* Alamofire */,
+			);
 			productName = "ios-stations";
 			productReference = BE24513D266FBEE00038AD81 /* ios-stations.app */;
 			productType = "com.apple.product-type.application";
@@ -247,6 +252,9 @@
 				ja,
 			);
 			mainGroup = BE245134266FBEE00038AD81;
+			packageReferences = (
+				6DC783CD2A25E0DE00C07A8F /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = BE24513E266FBEE00038AD81 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -265,7 +273,6 @@
 			files = (
 				617F70BE29C2BD4B00B7AFFE /* testResources in Resources */,
 				BE24514D266FBEE10038AD81 /* LaunchScreen.storyboard in Resources */,
-				94ECF65426EDF5EF0069D584 /* InfoPlist.strings in Resources */,
 				BE24514A266FBEE10038AD81 /* Assets.xcassets in Resources */,
 				BE245148266FBEE00038AD81 /* Main.storyboard in Resources */,
 			);
@@ -338,8 +345,6 @@
 		94ECF65626EDF5EF0069D584 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				94ECF65526EDF5EF0069D584 /* ja */,
-				94ECF65726EDF7110069D584 /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -649,6 +654,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		6DC783CD2A25E0DE00C07A8F /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = exactVersion;
+				version = 5.4.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		6DC783CE2A25E0DE00C07A8F /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6DC783CD2A25E0DE00C07A8F /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = BE245135266FBEE00038AD81 /* Project object */;
 }
