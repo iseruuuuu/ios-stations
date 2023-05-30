@@ -11,16 +11,32 @@ class FirstViewController: UIViewController {
     //@IBOutlet weak var button: UIButton!
     var books: [Book]?
     
+    var bookAPIClient: BookAPIClientProtocol = BookAPIClient()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         //self.view.backgroundColor = UIColor.Theme.main
         //self.view.backgroundColor = UIColor(named: "Main")
+        
+        bookAPIClient.fetchBooks(offset: 10) { [weak self] fetchedBooks in
+            guard let fetchedBooks = fetchedBooks else {
+                print("Failed to fetch books.")
+                return
+            }
+            
+            DispatchQueue.main.async {
+                self?.books = fetchedBooks
+            }
+            
+        }
+        
     }
+    
     
     //ミッション９
     @IBAction func changeButtonBackgroundColor() {
-     //self.button.backgroundColor = UIColor.random
+        //self.button.backgroundColor = UIColor.random
     }
     
     @IBAction func presentSecondViewController(_ sender: Any) {

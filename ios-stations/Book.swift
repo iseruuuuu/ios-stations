@@ -11,3 +11,16 @@ struct Book: Decodable {
     let review: String
     let reviewer: String
 }
+
+struct BooksResponse: Decodable {
+    var books: [Book]
+    
+    init(from decoder: Decoder) throws {
+        var container = try decoder.unkeyedContainer()
+        self.books = []
+        while !container.isAtEnd {
+            let book = try container.decode(Book.self)
+            books.append(book)
+        }
+    }
+}
